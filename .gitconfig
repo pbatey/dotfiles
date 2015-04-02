@@ -1,0 +1,21 @@
+[user]
+	email = phil.batey@thistech.com
+	name = Phil Batey
+[credential]
+	helper = osxkeychain
+[core]
+	excludesfile = /Users/pbatey/.gitignore_global
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[color]
+	ui = true
+[push]
+	default = simple
+[alias]
+        undo-commit = reset --soft HEAD~1
+        undo-add = reset HEAD
+        undo-first-commit = update-ref -d HEAD

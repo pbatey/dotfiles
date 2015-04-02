@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/Users/pbatey/src/pbatey/query-to-mongodb/node_modules/regex-iso-date'
+let g:netrw_dirhist_2='/Users/pbatey/src/acds/acds-ui/app'
+let g:netrw_dirhist_3='/Users/pbatey/src/pbatey/node_modules/query-to-mongo'
+let g:netrw_dirhist_4='/Users/pbatey/src/pbatey/query-to-mongo'
+let g:netrw_dirhist_5='/Users/pbatey/src/capsign-examples/java'
+let g:netrw_dirhist_6='/Users/pbatey/.vim'
