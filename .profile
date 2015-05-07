@@ -11,7 +11,6 @@ export MAVEN_OPTS="-Xmx512m -XX:MaxPermSize=128m"
 
 export PATH=$PATH:~/bin:/usr/local/mongodb/bin:/usr/local/jmeter/bin:$JAVA_HOME/bin
 export PS1="$ "
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 #function to quickly get ip addresses
 function myip () {

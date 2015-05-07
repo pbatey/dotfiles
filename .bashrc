@@ -1,1 +1,1 @@
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting (ruby version manager)
+PATH=$PATH
