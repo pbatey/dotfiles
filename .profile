@@ -29,7 +29,8 @@ function myip () {
 }
 
 #aliases
-alias v=vagrant
+alias v="vagrant"
+alias h="history"
 #alias ls='ls -G'
 alias www="python -m SimpleHTTPServer"
 alias mvn-help="cat ~/bin/mvn-help.txt"
@@ -62,6 +63,9 @@ function marks {
     \ls -l "$MARKPATH" | tail -n +2 | sed 's/  / /g' | cut -d' ' -f9- | awk -F ' -> ' '{printf "%s -> %s\n", $1, $2}'
 }
 
+alias j="jump"
+alias m="marks"
+
 _completemarks() {
   local curw=${COMP_WORDS[COMP_CWORD]}
   #local wordlist=$(find $MARKPATH -type l -printf "%f\n")
@@ -71,7 +75,8 @@ _completemarks() {
   return 0
 }
 
-complete -F _completemarks jump unmark
+complete -F _completemarks jump unmark j
 
 # don't check .profile_private into dotfiles
 . .profile_private
+
