@@ -6,7 +6,7 @@ export SVN_EDITOR=vi
 export CLICOLOR=true
 export LSCOLORS=Gxfxcxdxbxegedabagacad
 
-export JAVA_HOME=`/usr/libexec/java_home -v1.7`
+export JAVA_HOME=`/usr/libexec/java_home -v1.8`
 export MAVEN_OPTS="-Xmx512m -XX:MaxPermSize=128m"
 
 export PATH=$PATH:~/bin:/usr/local/mongodb/bin:/usr/local/jmeter/bin:$JAVA_HOME/bin
@@ -77,5 +77,6 @@ _completemarks() {
 complete -F _completemarks jump unmark j
 
 # don't check .profile_private into dotfiles
-. .profile_private
-
+if [ -e .profile_private ]; then
+  . .profile_private
+fi

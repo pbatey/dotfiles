@@ -4,7 +4,7 @@
 [credential]
 	helper = osxkeychain
 [core]
-	excludesfile = /Users/pbatey/.gitignore_global
+	excludesfile = /Users/pbatey200/.gitignore_global
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 
