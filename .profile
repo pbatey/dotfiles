@@ -46,7 +46,7 @@ alias path="echo $PATH | sed -e 's/:/\\
 alias jetty="java -Xmx512m -XX:MaxPermSize=256m -jar /usr/local/jetty-runner.jar"
 alias serve="python -m SimpleHTTPServer"
 
-alias docker-sh="bash --login '/Applications/Docker/Docker Quickstart Terminal.app/Contents/Resoures/Scripts/start.sh'"
+alias docker-sh="bash --login '/Applications/Docker/Docker Quickstart Terminal.app/Contents/Resources/Scripts/start.sh'"
 alias rot13="tr '[A-Za-z]' '[N-ZA-Mn-za-m]'"
 
 export MARKPATH=$HOME/.marks
