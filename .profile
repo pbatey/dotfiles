@@ -7,7 +7,7 @@ export CLICOLOR=true
 export LSCOLORS=Gxfxcxdxbxegedabagacad
 
 export JAVA_HOME=`/usr/libexec/java_home -v1.8`
-export MAVEN_OPTS="-Xmx512m -XX:MaxPermSize=128m"
+export MAVEN_OPTS="-Xmx512m"
 
 export PATH=$PATH:~/bin:/usr/local/mongodb/bin:/usr/local/jmeter/bin:$JAVA_HOME/bin
 export PS1="$ "
@@ -46,6 +46,9 @@ alias path="echo $PATH | sed -e 's/:/\\
 alias jetty="java -Xmx512m -XX:MaxPermSize=256m -jar /usr/local/jetty-runner.jar"
 alias serve="python -m SimpleHTTPServer"
 
+alias docker-sh="bash --login '/Applications/Docker/Docker Quickstart Terminal.app/Contents/Resoures/Scripts/start.sh'"
+alias rot13="tr '[A-Za-z]' '[N-ZA-Mn-za-m]'"
+
 export MARKPATH=$HOME/.marks
 function jump {
     cd -P "$MARKPATH/$1" 2>/dev/null && pwd || echo "No such mark: $1"
@@ -77,6 +80,6 @@ _completemarks() {
 complete -F _completemarks jump unmark j
 
 # don't check .profile_private into dotfiles
-if [ -e .profile_private ]; then
-  . .profile_private
+if [ -e ~/.profile_private ]; then
+  . ~/.profile_private
 fi
