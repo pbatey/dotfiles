@@ -1,6 +1,6 @@
 [user]
-	email = phil.batey@thistech.com
 	name = Phil Batey
+	email = pbatey@gmail.com
 [credential]
 	helper = osxkeychain
 [core]
@@ -16,7 +16,7 @@
 [push]
 	default = simple
 [alias]
-        undo-add = reset HEAD
-        undo-commit = reset --soft HEAD~1
-        undo-first-add = rm --cached
-        undo-first-commit = update-ref -d HEAD
+	undo-add = reset HEAD
+	undo-commit = reset --soft HEAD^
+	undo-first-add = rm --cached
+	undo-first-commit = update-ref -d HEAD
