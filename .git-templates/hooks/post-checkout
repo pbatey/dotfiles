@@ -1,0 +1,71 @@
+#!/usr/local/bin/python
+
+#
+# Hook to set user.email based on origin url
+#
+# Put this file in ~/.git-templates/hooks/post-checkout and install with
+#   git config --global init.templatedir ~/.git-templates
+#   chmod +x ~/.git-templates/hooks/post-checkout
+#
+# The script reads ~/.git-email as a dictionary of origin-url-substrings to email, for example:
+# {
+#   "some-repo.org:some-sub-repo": "some-email@example.com",
+#   "another-repo.org": "some-other-email@exmaple.com"
+# }
+#
+# Requires gitpython
+#   brew install python && pip install gitpython
+#
+ 
+import ConfigParser
+import json
+import git
+import os
+import sys
+
+def readEmailMap(file):
+  file = os.path.expanduser(file)
+  if not os.path.isfile(file):
+    return {}
+  with open(file, 'r') as f:
+    emailMap = json.load(f)
+    return emailMap
+
+def getEmail(repo):
+  config = repo.config_reader(config_level = 'repository')
+  try:
+    return config.get_value('user', 'email')
+  except (ConfigParser.NoSectionError, ConfigParser.NoOptionError):
+    return None 
+
+def getOriginUrl(repo):
+  try:
+    origin = repo.remote('origin')
+    if not origin:
+      return None
+    return origin.url
+  except ValueError:
+    return None
+
+def setEmail(repo, email):
+  config = repo.config_writer()
+  config.set_value('user', 'email', email)
+  config.release()
+
+def whichEmailFor(originUrl, emailMap):
+  for key, value in emailMap.iteritems():
+    if key in originUrl:
+      return value
+  return None
+
+repo = git.Repo(os.getcwd())
+originUrl = getOriginUrl(repo)
+email = getEmail(repo)
+
+if originUrl and email is not None:
+  email = whichEmailFor(originUrl, readEmailMap('~/.git-email'))
+  if email: setEmail(repo, email)
+if email is not None:
+  print 'Your user.email is set to \'{0}\'.'.format(email)
+elif originUrl is not None:
+  print 'No match for \'{0}\' in ~/.git-email'.format(originUrl)
