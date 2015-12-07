@@ -66,8 +66,6 @@ if originUrl and not email:
   email = whichEmailFor(originUrl, readEmailMap('~/.git-email'))
   if email:
     setEmail(repo, email)
+    print 'Your user.email is set to \'{0}\'.'.format(email)
   else:
     print 'No match for \'{0}\' in ~/.git-email'.format(originUrl)
-
-if email:
-  print 'Your user.email is set to \'{0}\'.'.format(email)
