@@ -20,3 +20,6 @@
 	undo-commit = reset --soft HEAD^
 	undo-first-add = rm --cached
 	undo-first-commit = update-ref -d HEAD
+	gr = log --graph --full-history --all --color --decorate
+[init]
+	templatedir = /Users/pbatey200/.git-templates
