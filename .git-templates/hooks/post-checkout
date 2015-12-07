@@ -36,16 +36,16 @@ def getEmail(repo):
   try:
     return config.get_value('user', 'email')
   except (ConfigParser.NoSectionError, ConfigParser.NoOptionError):
-    return None 
+    return '' 
 
 def getOriginUrl(repo):
   try:
     origin = repo.remote('origin')
     if not origin:
-      return None
+      return '' 
     return origin.url
   except ValueError:
-    return None
+    return ''
 
 def setEmail(repo, email):
   config = repo.config_writer()
@@ -56,16 +56,18 @@ def whichEmailFor(originUrl, emailMap):
   for key, value in emailMap.iteritems():
     if key in originUrl:
       return value
-  return None
+  return ''
 
 repo = git.Repo(os.getcwd())
 originUrl = getOriginUrl(repo)
 email = getEmail(repo)
 
-if originUrl and email is not None:
+if originUrl and not email:
   email = whichEmailFor(originUrl, readEmailMap('~/.git-email'))
-  if email: setEmail(repo, email)
-if email is not None:
+  if email:
+    setEmail(repo, email)
+  else:
+    print 'No match for \'{0}\' in ~/.git-email'.format(originUrl)
+
+if email:
   print 'Your user.email is set to \'{0}\'.'.format(email)
-elif originUrl is not None:
-  print 'No match for \'{0}\' in ~/.git-email'.format(originUrl)
